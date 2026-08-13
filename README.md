@@ -72,3 +72,13 @@ In this task, I identified `58.242.83.20` as the source of 63 failed authenticat
 | Stealthy 4 attempts/minute | Attackers understand account lockout thresholds and deliberately avoid them |
 | Legitimate ISP backbone | Simple geo-blocking isn't enough—this IP is from a major ISP, not a known proxy/VPN |
 | No successful logins | Strong passwords on the root account successfully mitigated the attack |
+## Recommended Actions
+1. **Immediate**: Block `58.242.83.20` at the firewall ( would have stopped 63 attacks)
+2. **Short-term**:
+   - Implement failed login threshold alerts
+   - Enforce lockout policies after 5 failed attempts
+3. **Long-term**:
+   - Disable root SSH login (force sudo usage)
+   - Implement geo-IP restrictions for adminstrative access
+   - Consider fail2ban or equivalent automated blocking 
+

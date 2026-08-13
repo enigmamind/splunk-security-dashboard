@@ -30,3 +30,4 @@ index=* (tag=authentication action=failure) OR (sourcetype="XmlWinEventLog:Secur
 index=* (tag=authentication action=failure) OR (sourcetype="XmlWinEventLog:Security" EventCode=4625)) | stats count by src_ip | sort - count | head 10
 ```
 ## Screenshots
+![Dashboard Overview](dashboard-screenshots/dashboard-overview.jpg)                                         

@@ -86,4 +86,18 @@ In this task, I identified `58.242.83.20` as the source of 63 failed authenticat
 - **Context is Everything**: raw data of 63 attempts becomes intelligence when combined with timing, accounting targeting and geolocation
 - **Proactive defense**: Monitoring without response is noise. The investigation naturally led to concrete recommendations to improve security posture.
 ## Technical SPL Queries Used
+```
+-- Step 1: All activity from suspect IP
+(src_ip="58.242.83.20")
+| stats count by action, sourcetype
 
+-- Step 2: Target accounts
+(src_ip="58.242.83.20")
+| stats count by user, src_ip
+
+-- Step 3: Attack timeline
+(src_ip="58.242.83.20")
+| timechart count
+
+-- Step 4: Geolocation
+https://www.iplocate.io/

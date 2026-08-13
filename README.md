@@ -3,7 +3,7 @@
 ## Overview
 This project demonstrates a Splunk-based security monitoring dashboard for tracking failed authentication attempts. Built as part of a hands-on lab to secure monitoring and alerting 
 ## Features
-- **Real-time Monitoring**: Tracks failed login attempts by source IP over 
+- **Real-time Monitoring**: Tracks failed login attempts by source IP over time
 - **Top Offenders View**: Identifies IP address with the highest number of failed attempts
 - **Threshold-Based Alerting**: Automatically triggers alerts when a single IP exceeds 5 failed attempts in 5 minutes
 

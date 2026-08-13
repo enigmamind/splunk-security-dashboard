@@ -81,4 +81,9 @@ In this task, I identified `58.242.83.20` as the source of 63 failed authenticat
    - Disable root SSH login (force sudo usage)
    - Implement geo-IP restrictions for adminstrative access
    - Consider fail2ban or equivalent automated blocking 
+## Why this Matters
+- **Alert triage**: Not all failed logins are equal. This investigation showed how to distinguish between opportunistic scanning and targeted attack
+- **Context is Everything**: raw data of 63 attempts becomes intelligence when combined with timing, accounting targeting and geolocation
+- **Proactive defense**: Monitoring without response is noise. The investigation naturally led to concrete recommendations to improve security posture.
+## Technical SPL Queries Used
 

@@ -32,3 +32,23 @@ index=* (tag=authentication action=failure) OR (sourcetype="XmlWinEventLog:Secur
 ## Screenshots
 ![Dashboard Overview](dashboard-screenshots/dashboard-overview.jpg)                   
 ## Lesson learned: Investigation a Targeted Root Brute-Force Attack
+
+### Overview
+In this task, I identified `58.242.83.20` as the source of 63 failed authentication attempts as the highest in my dataset. Rather than stopping at the dashboard number, I conducted a deep-dive investigation to understand the attacker's behavior, intent, and risk level.
+
+### Investigation Process 
+#### step 1 Verify if compromise occurred
+- **Query**: `src_ip="58.242.83.20"`
+- **Finding**: 63 failures, **Zero successful logins**
+- **Conclusion**: The attack was unsuccessful and no breach occurred.
+#### step 2 Identify target accounts
+- **Query**: `src_ip="58.242.83.20" | stats count by user`
+- **Finding**: 100% of attempts targeted the `root` account
+- **Conclusion**: This was a **targeted attack** not opportunistic. The attacker specifically sought the most privileged Unix/Linux account, indicating they understood the environment.
+- 
+#### step 3 Analyse attack timing and patterns
+- **Query**: `src_ip="58.242.83.20" | timechart count`
+- **Finding**:3
+  - all 63 attempts occurred between ***02:00 - 02:14 AM** (server time)
+  - Attempts were evenly distributed at **~4.2 per minutes**( 1 attempt every 14.3 seconds)
+- **Conclusion**: The consistent pace suggests an automated brute-force tool deliberately throttled to avoid triggering account lockout policies.
